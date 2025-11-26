@@ -248,19 +248,28 @@ a {
 
 /* chef section */
 .chefs-title {
-    max-width: 520px;
+    position: relative;
     margin: 0 auto 80px;
 }
 
 .chefs-title::before,
 .chefs-title::after {
-    display: block;
+    position: absolute;
+    bottom: 24px;
     width: 352px;
     border: 2px solid var(--color-brand-light);
     content: '';
 }
 
-.chefs-list{
+.chefs-title::before {
+    left: 0;
+}
+
+.chefs-title::after {
+    right: 0;
+}
+
+.chefs-list {
     display: flex;
     flex-wrap: wrap;
     gap: 40px 30px;
@@ -287,13 +296,14 @@ a {
     font-weight: 600;
 }
 
-.chef-text p{
+.chef-text p {
     margin-bottom: 24px;
 }
 
-.chef-text p:last-child{
+.chef-text p:last-child {
     margin-bottom: 0;
 }
+
 /* Formats section */
 .formats-container {
     display: flex;
@@ -337,6 +347,7 @@ a {
     font-size: 14px;
     font-weight: 300;
 }
+
 /* Carousel */
 .carousel-button {
     display: flex;
@@ -347,7 +358,7 @@ a {
     height: 44px;
     border-radius: 50%;
     background-color: transparent;
-    border: 1px solid   var(--color-primary-dark);
+    border: 1px solid var(--color-primary-dark);
     cursor: pointer;
     fill: var(--color-primary-dark);
     flex-shrink: 0;
@@ -381,6 +392,34 @@ a {
 /* Footer */
 .footer {
     padding: 32px 0;
+    position: relative;
+    background-image: url('../images/footer-background.png');
+    background-color: var(--color-primary-dark);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.footer::before,
+.footer::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    background-repeat: no-repeat;
+}
+
+.footer::before {
+    width: 180px;
+    height: 120px;
+    left: 0;
+    background-image: url(../images/decor-bread-small.png);
+}
+
+.footer::after {
+    width: 380px;
+    height: 190px;
+    right: 0;
+    background-image: url(../images/decor-bread-large.png);
 }
 
 .footer-container {
@@ -425,14 +464,43 @@ a {
     font-size: 14px;
 }
 
-.footer {
-    background-image: url('../images/footer-background.png');
-    background-color: var(--color-primary-dark);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+/* Modal window */
+.backdrop {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
+.backdrop.is-hidden{
+    display: none;
+}
+
+/* Варіант для анімації */
+/* .backdrop.is-hidden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+} */
+
+.modal {
+    width: 880px;
+    height: 880px;
+    position: relative;
+    background-color: var(--color-primary-light);
+    border-radius: 32px;
+}
+
+.modal-btn-close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
 /* Шрифти це набір літер для відображення певного тексту 
 Розміри рядкових елементів залежить від контенту. Блокові можна задавати вручну. Рядково-блокові розташовуються в рядок, але можна конфігурувати розміри.
 Якшо 2 блокові елементи мають між собою задані margin то застосований буде тільки той, що має більше значення.
